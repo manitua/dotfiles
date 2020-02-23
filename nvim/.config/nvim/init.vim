@@ -98,7 +98,7 @@ let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_uniform_status_lines = 1
 let g:nord_uniform_diff_background = 1
-let g:nord_comment_brightness = 15
+"let g:nord_comment_brightness = 15
 let g:nord_cursor_line_number_background = 1
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
@@ -106,7 +106,7 @@ let g:solarized_term_italics = 1
 let g:palenight_terminal_italics = 1
 let ayucolor="mirage"
 set background=dark
-colorscheme OceanicNext
+colorscheme nord
 
 "let g:airline_theme='nord'
 

@@ -17,11 +17,11 @@ fi
 x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
-panel_height=16
-font="-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"
+panel_height=26
+font="-*-fixed-medium-*-*-*-20-*-*-*-*-*-*-*"
 bgcolor=$(hc get frame_border_normal_color)
 selbg=$(hc get window_border_active_color)
-selfg='#101010'
+selfg='#2e3440'
 
 ####
 # Try to find textwidth binary.
@@ -71,7 +71,7 @@ hc pad $monitor $panel_height
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
-        date +$'date\t^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
+        date +$'date\t^fg(#eceff4)%H:%M^fg(#d8dee9), %Y-%m-^fg(#eceff4)%d'
         sleep 1 || break
     done > >(uniq_linebuffered) &
     childpid=$!
@@ -120,7 +120,7 @@ hc pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg() $date $separator"
+        right="$separator $batery $separator^bg() $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
@@ -184,4 +184,4 @@ hc pad $monitor $panel_height
 
 } 2> /dev/null | dzen2 -w $panel_width -x $x -y $y -fn "$font" -h $panel_height \
     -e "button3=;button4=exec:$hc_quoted use_index -1;button5=exec:$hc_quoted use_index +1" \
-    -ta l -bg "$bgcolor" -fg '#efefef'
+    -ta l -bg "$bgcolor" -fg '#eceff4'

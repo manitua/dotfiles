@@ -1,0 +1,46 @@
+base linux linux-firmware neovim
+
+intel-ucode grub efibootmgr
+net-tools
+sudo
+networkmanager network-manager-applet
+xf86-video-intel
+linux-headers
+xorg-server xorg-xinit xterm
+herbstluftwm
+git
+dnsutils
+openssh
+curl tmux stow wget
+zsh which
+go
+traceroute
+whois
+tree
+man
+dmidecode
+patch make pkg-config gcc
+
+xautolock
+xorg-xsetroot
+dzen2
+
+xorg-xfontsel
+xorg-xlsfonts
+xorg-xset
+xorg-fonts-misc
+
+noto-fonts-cjk noto-fonts-emoji
+firefox firefox-developer-edition
+
+xorg-xdpyinfo
+fontconfig
+
+base-devel
+xorg-xrandr
+
+nodejs npm yarn
+
+python-pynvim
+
+xclip xsel

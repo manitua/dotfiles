@@ -78,16 +78,21 @@ sync_repo() {
 #
 # Main
 #
-program_must_exist "curl"
-program_must_exist "git"
-program_must_exist "nvim"
-program_must_exist "stow"
-program_must_exist "tmux"
+for program in curl git nvim stow tmux; do
+  program_must_exist "${program}"
+done
 
-# Ubuntu
-# TODO
+# GNU/Linux
+if [[ ${OSTYPE} == "linux-gnu" ]]; then
+  for repo in st/my-0.8.4 dmenu/my-4.10 slock/my-1.5; do
+    sync_repo "${HOME}/work/github.com/manitua/${repo%/*}" \
+      "https://github.com/manitua/${repo%/*}" \
+      "${repo#*/}" \
+      "${repo%/*}"
+  done
+fi
 
-# Fedora
+# Arch Linux
 # TODO
 
 # macOS

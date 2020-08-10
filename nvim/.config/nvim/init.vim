@@ -6,21 +6,19 @@ endfunction
 call plug#begin('~/.local/share/nvim/plugged')
 " Colors
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'mhartington/oceanic-next'
-Plug 'lifepillar/vim-solarized8'
-Plug 'rakr/vim-one'
-Plug 'drewtempelmeyer/palenight.vim'
 
 " UI
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+"Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -29,7 +27,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-multiple-cursors'
 
 " Syntax and alignment
 Plug 'kien/rainbow_parentheses.vim'
@@ -37,20 +34,21 @@ Plug 'jiangmiao/auto-pairs'
 
 " Completion
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'w0rp/ale'
 Plug 'wellle/tmux-complete.vim'
 Plug 'zchee/deoplete-go', { 'for': 'go' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python'}
 
 " Go plugins
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.local/share/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v1.22', 'do': ':GoUpdateBinaries' }
 
 " TypeScript plugins
 "Plug 'leafgarland/typescript-vim'
@@ -66,15 +64,6 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 let g:neosnippet#enable_completed_snippet = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Signify
-let g:signify_sign_add = '+'
-let g:signify_sign_delete = "-"
-let g:signify_sign_change = '~'
-let g:signify_sign_delete_first_line = g:signify_sign_delete
-let g:signify_sign_changedelete = g:signify_sign_change
-let g:signify_vcs_list = ['git', 'hg']
-let g:signify_sign_show_count = 0
 
 " moving around, searching and patterns
 set ignorecase
@@ -92,19 +81,20 @@ let g:gruvbox_invert_selection = 1
 let g:gruvbox_termcolors = 256
 let g:gruvbox_contrast_dark="hard"
 let g:gruvbox_contrast_light="medium"
-let g:one_allow_italics = 1
-let g:jellybeans_use_term_italics=1
+
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_uniform_status_lines = 1
 let g:nord_uniform_diff_background = 1
 "let g:nord_comment_brightness = 15
 let g:nord_cursor_line_number_background = 1
+
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-let g:solarized_term_italics = 1
+
 let g:palenight_terminal_italics = 1
 let ayucolor="mirage"
+
 set background=dark
 colorscheme nord
 
@@ -123,7 +113,7 @@ set sidescrolloff=5
 " syntax, highlighting and spelling
 set cursorcolumn
 set cursorline
-set colorcolumn=80
+set colorcolumn=100
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
@@ -225,8 +215,9 @@ let g:go_fold_enable = ['import']
 let g:go_auto_type_info = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_sameids = 1
-let g:go_gocode_propose_source=1
-
+"let g:go_gocode_propose_source=1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
@@ -260,6 +251,16 @@ au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>d :sp <CR>:exe "GoDoc" <CR>
 au Filetype go nnoremap <leader>r :GoRun %<CR>
 
+" Java settings
+let g:LanguageClient_serverCommands = {
+    \ 'java': ['/usr/bin/jdtls', '-data', getcwd()],
+    \ 'go': ['gopls'],
+    \ 'rust': ['rls'],
+    \ 'python': ['pyls'],
+    \ }
+" Run gofmt on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
 " YAML settings
 au FileType yaml setlocal ts=2
 au FileType yaml setlocal sts=2
@@ -286,19 +287,10 @@ let g:ansible_name_highlight = 'b'
 
 " Markdown settings
 let vim_markdown_preview_toggle = 1 " Display images on toggle preview C-p
-let vim_markdown_preview_browser = 'chromium'
+let vim_markdown_preview_browser = 'firefox'
 let vim_markdown_preview_use_xdg_open = 1
 
-" ale
-let g:ale_sign_column_always = 1
-let g:ale_python_flake8_options = "--max-line-length=120"
-let g:ale_fix_on_save = 0
-let g:ale_set_loclist = 1
-let g:ale_set_quickfix = 0
-
 " rust settings
-let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
@@ -319,20 +311,12 @@ let g:jsx_ext_required = 0
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-m>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
 
 " Prose mode
 function! ProseMode()

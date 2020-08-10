@@ -1,0 +1,7 @@
+[user]
+	email = jasmin.beharic@gmail.com
+	name = Jasmin Beharic
+[core]
+	editor = nvim
+[log]
+	date = iso8601

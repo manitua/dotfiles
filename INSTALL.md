@@ -1,46 +1,61 @@
-Nerd Fonts
-==========
-$ git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git
+## Nerd Fonts
+$ git clone --branch 2.1.0 --depth=1 https://github.com/ryanoasis/nerd-fonts.git
 $ cd nerd-fonts && ./install.sh Hack
 
-Oh My Zsh
-=========
-$ wget <URL>
+## Oh My Zsh
+$ wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 $ ./install.sh
 
-Linux
-=====
+## GNU/Linux
 
-### Simple Terminal 0.8.1
-dnf:
- - fontconfig-devel
- - freetype-devel
- - libX11-devel
- - libXft-devel
- - patch
+### Arch
+$ ./bootstrap arch
 
-apt:
- - TODO
+## Tmux
 
-Patch:
- - st-scrollback-0.8.diff
- - st-no_bold_colors-0.8.1.diff
- - st-solarized-dark-20180411-041912a.diff
+### Reload TMUX environment so TPM is sourced
 
-```
-#define histsize 2000000
-static char *font = "Hack Nerd Font Mono:pixelsize=28:antialias=true:autohint=true";
-char *termname = "xterm-256color";
+```bash
+# type this in terminal if tmux is already running
+$ tmux source ~/.tmux.conf
 ```
 
-### Herbstluftwm 0.7.1
-dnf:
- - dmenu
- - dzer2
- - slock
- - glib2-devel
- - gcc-c++
- - libXext-devel
+### Key bindings
 
-apt:
- - TODO
+`prefix` + <kbd>I</kbd>
+- Installs new plugins from GitHub or any other git repository
+- Refreshes TMUX environment
+
+`prefix` + <kbd>U</kbd>
+- updates plugin(s)
+
+`prefix` + <kbd>alt</kbd> + <kbd>u</kbd>
+- remove/uninstall plugins not on the plugin list
+
+## Vim (nvim)
+
+`:PlugInstall`
+- to install plugins
+
+### Commands
+
+| Command                             | Description                                                        |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| `PlugInstall [name ...] [#threads]` | Install plugins                                                    |
+| `PlugUpdate [name ...] [#threads]`  | Install or update plugins                                          |
+| `PlugClean[!]`                      | Remove unlisted plugins (bang version will clean without prompt)   |
+| `PlugUpgrade`                       | Upgrade vim-plug itself                                            |
+| `PlugStatus`                        | Check the status of plugins                                        |
+| `PlugDiff`                          | Examine changes from the previous update and the pending changes   |
+| `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
+
+### Diagnose problems
+`:checkhealth`
+- check neovims health
+
+```sh
+$ sudo npm install -g typescript neovim
+
+$ gem install neovim
+# fix $PATH, if needed, for `gem` executables
+```

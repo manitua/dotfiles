@@ -1,46 +1,64 @@
-base linux linux-firmware neovim
-
-intel-ucode grub efibootmgr
-net-tools
-sudo
-networkmanager network-manager-applet
-xf86-video-intel
-linux-headers
-xorg-server xorg-xinit xterm
-herbstluftwm
-git
-dnsutils
-openssh
-curl tmux stow wget
-zsh which
-go
-traceroute
-whois
-tree
-man
-dmidecode
-patch make pkg-config gcc
-
-xautolock
-xorg-xsetroot
-dzen2
-
-xorg-xfontsel
-xorg-xlsfonts
-xorg-xset
-xorg-fonts-misc
-
-noto-fonts-cjk noto-fonts-emoji
-firefox firefox-developer-edition
-
-xorg-xdpyinfo
-fontconfig
-
+alsa-utils
+base
 base-devel
-xorg-xrandr
-
-nodejs npm yarn
-
+bluez
+bluez-utils
+cpio
+curl
+dmidecode
+dnsutils
+dzen2
+efibootmgr
+firefox
+firefox-developer-edition
+fontconfig
+gcc
+git
+go
+grub
+herbstluftwm
+intel-ucode
+linux
+linux-firmware
+linux-headers
+make
+man
+neovim
+net-tools
+networkmanager
+network-manager-applet
+nodejs-lts-erbium
+noto-fonts-cjk
+noto-fonts-emoji
+npm
+ntp
+openssh
+openssl
+pacparser
+patch
+pkg-config
 python-pynvim
-
-xclip xsel
+rpm-tools
+stow
+sudo
+tmux
+traceroute
+tree
+wget
+which
+whois
+xautolock
+xclip
+xorg-fonts-misc
+xorg-server
+xorg-xdpyinfo
+xorg-xfontsel
+xorg-xinit
+xorg-xlsfonts
+xorg-xrandr
+xorg-xset
+xorg-xsetroot
+xsel
+xterm
+yarn
+zsh

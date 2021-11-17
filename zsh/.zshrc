@@ -104,3 +104,32 @@ prompt_context(){}
 alias vim="nvim"
 alias rm='rm -i'
 
+# Remove command lines from the history list when the first character on
+# the line is a space
+setopt HIST_IGNORE_SPACE
+
+# herbstluftwm layout
+layout1="(split horizontal:0.76:0 (split horizontal:0.32:1 (split vertical:0.5:1 (clients vertical:0) (clients vertical:0)) (split vertical:0.5:1 (clients vertical:0) (clients vertical:0 0xa00005))) (clients vertical:0))"
+layout2="(split horizontal:0.76:0 (split horizontal:0.32:1 (split vertical:0.5:0 (clients vertical:0 0x1000005) (clients vertical:0 0xe00005)) (split vertical:0.5:1 (clients vertical:0) (clients vertical:0
+0xa00005))) (clients vertical:0 0x1200005))"
+layout3="(split horizontal:0.76:0 (split horizontal:0.32:1 (split vertical:0.5:1 (clients vertical:0) (clients vertical:0)) (split vertical:0.5:1 (clients vertical:0) (clients vertical:0))) (clients vertical:0))"
+
+function proxy_on() {
+    export no_proxy="localhost,127.0.0.1"
+
+    local proxy="http://some-proxy-server:port"
+
+    export http_proxy="$proxy" \
+           https_proxy=$proxy \
+           HTTP_PROXY=$proxy \
+           HTTPS_PROXY=$proxy
+    echo -e "Proxy environment variable set."
+}
+
+function proxy_off(){
+    unset http_proxy https_proxy \
+          HTTP_PROXY HTTPS_PROXY
+    echo -e "Proxy environment variable removed."
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

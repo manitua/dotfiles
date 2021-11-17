@@ -1,7 +1,10 @@
 [user]
-	email = jasmin.beharic@gmail.com
-	name = Jasmin Beharic
+    email = jasmin.beharic@gmail.com
+    name = Jasmin Beharic
+    signingkey = 0x29B72274B74B288A
 [core]
-	editor = nvim
+    editor = nvim
 [log]
-	date = iso8601
+    date = iso8601
+[pull]
+    rebase = true

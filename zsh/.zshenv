@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 
-export PATH=$PATH:$GOPATH/bin:$HOME/.gem/ruby/2.7.0/bin
+export PATH=$PATH:$GOPATH/bin
 
 # Setting nvim as my default editor
 export VISUAL=nvim

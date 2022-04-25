@@ -32,29 +32,26 @@ $ tmux source ~/.tmux.conf
 `prefix` + <kbd>alt</kbd> + <kbd>u</kbd>
 - remove/uninstall plugins not on the plugin list
 
-## Vim (nvim)
+## Vim (neovim)
 
-`:PlugInstall`
+`:PaqInstall`
 - to install plugins
 
 ### Commands
 
-| Command                             | Description                                                        |
-| ----------------------------------- | ------------------------------------------------------------------ |
-| `PlugInstall [name ...] [#threads]` | Install plugins                                                    |
-| `PlugUpdate [name ...] [#threads]`  | Install or update plugins                                          |
-| `PlugClean[!]`                      | Remove unlisted plugins (bang version will clean without prompt)   |
-| `PlugUpgrade`                       | Upgrade vim-plug itself                                            |
-| `PlugStatus`                        | Check the status of plugins                                        |
-| `PlugDiff`                          | Examine changes from the previous update and the pending changes   |
-| `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
+| Command      | Description                                                                        |
+| -------------| ---------------------------------------------------------------------------------- |
+| `PaqInstall` | Install all packages listed in your configuration.                                 |
+| `PaqUpdate`  | Update all packages already on your system (it won't implicitly install them).     |
+| `PaqClean`   | Remove all packages (in Paq's directory) that aren't listed on your configuration. |
+| `PaqSync`    | Execute the three operations listed above.                                         |
 
 ### Diagnose problems
 `:checkhealth`
 - check neovims health
 
 ```sh
-$ sudo npm install -g typescript neovim
+$ sudo npm install -g typescript neovim quicktype
 
 $ gem install neovim
 # fix $PATH, if needed, for `gem` executables

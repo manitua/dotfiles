@@ -6,3 +6,5 @@ export PATH=$PATH:$GOPATH/bin
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export SUDO_EDITOR=$EDITOR
+
+export GPG_TTY=$(tty)

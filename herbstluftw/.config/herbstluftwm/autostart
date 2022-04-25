@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$HOME"/.config/herbstluftwm/colors
+
 # this is a simple config for herbstluftwm
 
 hc() {
@@ -8,7 +10,7 @@ hc() {
 
 hc emit_hook reload
 
-xsetroot -solid "#2E3440"
+xsetroot -solid "${BLACK}"
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -18,7 +20,7 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
-TERMINAL=st
+TERMINAL=alacritty
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
@@ -89,6 +91,8 @@ hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
+hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
+hc keybind $Mod-Control-m jumpto last-minimized
 hc keybind $Mod-p pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
@@ -111,8 +115,6 @@ hc keybind $Mod-Shift-Tab   cycle_all -1
 hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
-source "$HOME"/.config/herbstluftwm/colors
-
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -121,14 +123,20 @@ hc set frame_border_normal_color "${BLACK}"
 hc set frame_bg_normal_color "${GRAY}"
 hc set frame_bg_active_color "${GREEN}"
 hc set frame_border_width 0
-hc set always_show_frame 1
-hc set frame_bg_transparent 1
+hc set always_show_frame on
+hc set frame_bg_transparent on
 hc set frame_transparent_width 5
 hc set frame_gap 0
 
-hc attr theme.active.color "${BRIGHT_BLUE}"
+#hc attr theme.title_height 15
+#hc attr theme.title_font 'Dejavu Sans:pixelsize=12'  # example using Xft
+# hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
+#hc attr theme.padding_top 2  # space below the title's baseline (i.e. text depth)
+hc attr theme.active.color "${BLUE}"
+hc attr theme.title_color "${WHITE}"
 hc attr theme.normal.color "${GRAY}"
 hc attr theme.urgent.color "${RED}"
+hc attr theme.normal.title_color "${LIGHT_GRAY}"
 hc attr theme.inner_width 0
 hc attr theme.inner_color "${BLACK}"
 hc attr theme.border_width 5
@@ -136,13 +144,20 @@ hc attr theme.floating.border_width 4
 hc attr theme.floating.outer_width 1
 hc attr theme.floating.outer_color "${BLACK}"
 hc attr theme.active.inner_color "${GREEN}"
-hc attr theme.active.outer_color "${GREEN}"
+hc attr theme.urgent.inner_color "${MAGENTA}"
+hc attr theme.normal.inner_color "${GRAY}"
+# copy inner color to outer_color
+for state in active urgent normal ; do
+    hc substitute C theme.${state}.inner_color \
+        attr theme.${state}.outer_color C
+done
+hc attr theme.active.outer_width 0
 hc attr theme.background_color "${BLACK}"
 
 hc set window_gap 0
 hc set frame_padding 0
-hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
+hc set smart_window_surroundings off
+hc set smart_frame_surroundings on
 hc set mouse_recenter_gap 0
 
 # rules
@@ -163,7 +178,7 @@ hc set tree_style '╾│ ├└╼─┐'
 hc unlock
 
 # do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
+# hc set_monitors 3840x2400+0+0 3840x2160+3840+0
 # or simply:
 hc detect_monitors
 

@@ -32,6 +32,7 @@ require "paq" {
     "crispgm/nvim-go";
     "neovim/nvim-lspconfig";
     {"nvim-treesitter/nvim-treesitter", run='TSUpdate'};
+    "tami5/lspsaga.nvim";
     "hrsh7th/nvim-cmp";
     "hrsh7th/cmp-nvim-lsp";
     "romgrk/nvim-treesitter-context";

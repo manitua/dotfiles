@@ -13,6 +13,15 @@ options = { noremap = true }
 -- nerdtree
 map('n', '<C-n>', ':NvimTreeToggle<CR>', options)
 
+--LSPSaga
+map('n', 'gh', ':Lspsaga lsp_finder<CR>', options)
+map('n', 'gs', ':Lspsaga signature_help<CR>', options)
+map('n', 'gr', ':Lspsaga rename<CR>', options)
+map('n', 'gd', ':Lspsaga preview_definition<CR>', options)
+map('n', '<leader>ca', ':Lspsaga code_action<CR>', options)
+map('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', options)
+map('n', 'K', ':Lspsaga hover_doc<CR>', options)
+
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', options)

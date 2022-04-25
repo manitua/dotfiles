@@ -1,3 +1,11 @@
+require'lspsaga'.init_lsp_saga {
+    error_sign = 'ﮊ',
+    warn_sign = '',
+    hint_sign = '',
+    infor_sign = '',
+    border_style = "round",
+}
+
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
         "bash",

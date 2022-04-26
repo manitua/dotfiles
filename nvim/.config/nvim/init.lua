@@ -40,6 +40,7 @@ require "paq" {
     -- snippets
     "hrsh7th/vim-vsnip";
     "hrsh7th/vim-vsnip-integ";
+    "rafamadriz/friendly-snippets";
     "hrsh7th/cmp-buffer";
 
     -- statusline

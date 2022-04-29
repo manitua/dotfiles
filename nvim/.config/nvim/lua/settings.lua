@@ -49,6 +49,7 @@ o.wildmode           = "longest,full"
 o.completeopt        = "menuone,noinsert,noselect"
 vim.opt.shortmess:append({c = true})
 vim.opt.formatoptions:append({r = false, o = false, n = true})
+vim.fn.matchadd('errorMsg', [[\s\+$]]) -- Highlight trailing whitespace
 
 require("go").setup {}
 require("nvim-tree").setup {}

@@ -51,7 +51,7 @@ $ tmux source ~/.tmux.conf
 - check neovims health
 
 ```sh
-$ sudo npm install -g typescript neovim quicktype
+$ sudo npm install -g typescript neovim quicktype yaml-language-server bash-language-server
 
 $ gem install neovim
 # fix $PATH, if needed, for `gem` executables

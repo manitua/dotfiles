@@ -76,4 +76,15 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 end
 
+nvim_lsp.bashls.setup({ on_attach=on_attach, capabilities=capabilities })
 nvim_lsp.gopls.setup { on_attach=on_attach, capabilities=capabilities }
+nvim_lsp.yamlls.setup({
+    yaml = {
+        schemas = {
+            ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*.yml',
+            ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = '/docker-compose.*'
+        }
+    },
+    on_attach = on_attach,
+    capabilities=capabilities,
+})

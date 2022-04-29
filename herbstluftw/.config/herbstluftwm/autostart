@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$HOME"/.config/herbstluftwm/colors
+source "$HOME"/.config/herbstluftwm/colors.sh
 
 # this is a simple config for herbstluftwm
 
@@ -76,7 +76,7 @@ hc rename default "${tag_names[0]}" || true
 for i in "${!tag_names[@]}" ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
+    if [ -n "$key" ] ; then
         hc keybind "$Mod-$key" use_index "$i"
         hc keybind "$Mod-Shift-$key" move_index "$i"
     fi
@@ -91,6 +91,7 @@ hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
 hc keybind $Mod-Shift-f set_attr clients.focus.floating toggle
+hc keybind $Mod-Shift-d set_attr clients.focus.decorated toggle
 hc keybind $Mod-Shift-m set_attr clients.focus.minimized true
 hc keybind $Mod-Control-m jumpto last-minimized
 hc keybind $Mod-p pseudotile toggle
@@ -128,14 +129,19 @@ hc set frame_bg_transparent on
 hc set frame_transparent_width 5
 hc set frame_gap 0
 
-#hc attr theme.title_height 15
-#hc attr theme.title_font 'Dejavu Sans:pixelsize=12'  # example using Xft
+hc attr theme.title_height 15
+hc attr theme.title_when never
+hc attr theme.title_font 'Dejavu Sans:pixelsize=12'  # example using Xft
 # hc attr theme.title_font '-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
-#hc attr theme.padding_top 2  # space below the title's baseline (i.e. text depth)
+hc attr theme.title_depth 3  # space below the title's baseline
 hc attr theme.active.color "${BLUE}"
 hc attr theme.title_color "${WHITE}"
 hc attr theme.normal.color "${GRAY}"
 hc attr theme.urgent.color "${RED}"
+hc attr theme.tab_color '#1F1F1Fdd'
+hc attr theme.active.tab_color '#2B4F0Add'
+hc attr theme.active.tab_outer_color '#6C8257dd'
+hc attr theme.active.tab_title_color '#ababab'
 hc attr theme.normal.title_color "${LIGHT_GRAY}"
 hc attr theme.inner_width 0
 hc attr theme.inner_color "${BLACK}"
@@ -171,6 +177,7 @@ hc rule floatplacement=smart
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+hc rule fixedsize floating=on
 
 hc set tree_style '╾│ ├└╼─┐'
 

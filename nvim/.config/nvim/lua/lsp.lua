@@ -9,9 +9,11 @@ require'lspsaga'.init_lsp_saga {
 require("nvim-treesitter.configs").setup {
     ensure_installed = {
         "bash",
+        "bicep",
         "c",
         "c_sharp",
         "comment",
+        "css",
         "dockerfile",
         "go",
         "gomod",
@@ -21,6 +23,7 @@ require("nvim-treesitter.configs").setup {
         "http",
         "javascript",
         "json",
+        "jsonnet",
         "latex",
         "lua",
         "make",
@@ -29,6 +32,7 @@ require("nvim-treesitter.configs").setup {
         "regex",
         "rust",
         "svelte",
+        "terraform",
         "toml",
         "tsx",
         "typescript",
@@ -56,7 +60,7 @@ require("treesitter-context").setup {
 
 local nvim_lsp = require("lspconfig")
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {
@@ -76,8 +80,14 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 end
 
+nvim_lsp.azure_pipelines_ls.setup({
+    on_attach=on_attach,
+    capabilities=capabilities,
+})
 nvim_lsp.bashls.setup({ on_attach=on_attach, capabilities=capabilities })
 nvim_lsp.gopls.setup { on_attach=on_attach, capabilities=capabilities }
+nvim_lsp.jsonls.setup { on_attach=on_attach, capabilities=capabilities }
+nvim_lsp.jsonnet_ls.setup { on_attach=on_attach, capabilities=capabilities }
 nvim_lsp.yamlls.setup({
     yaml = {
         schemas = {
@@ -87,4 +97,25 @@ nvim_lsp.yamlls.setup({
     },
     on_attach = on_attach,
     capabilities=capabilities,
+})
+
+nvim_lsp.terraformls.setup({ on_attach=on_attach, capabilities=capabilities })
+
+local bicep_lsp_bin = "/usr/local/bin/bicep-langserver/Bicep.LangServer.dll"
+nvim_lsp.bicep.setup({
+    on_attach=on_attach, capabilities=capabilities,
+    cmd = { "dotnet", bicep_lsp_bin }
+})
+vim.cmd("autocmd BufNewFile,BufRead *.bicep set filetype=bicep")
+
+local on_attach_dotnet = function(client, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+end
+
+local pid = vim.fn.getpid()
+-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+local omnisharp_bin = "/home/jasmin/Downloads/omnisharp/OmniSharp"
+nvim_lsp.omnisharp.setup({
+    on_attach=on_attach_dotnet, capabilities=capabilities,
+    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) }
 })

@@ -21,11 +21,14 @@ map('n', 'gd', ':Lspsaga preview_definition<CR>', options)
 map('n', '<leader>ca', ':Lspsaga code_action<CR>', options)
 map('v', '<leader>ca', ':<C-U>Lspsaga range_code_action<CR>', options)
 map('n', 'K', ':Lspsaga hover_doc<CR>', options)
+map('n', '<leader>t', ':Lspsaga open_floaterm<CR>', options)
+map('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", options)
+map('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", options)
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', options)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', options)
-map('n', '<leader>fb', '<cmd>Telescope buffesr<CR>', options)
+map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', options)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', options)
 
 -- VSnip

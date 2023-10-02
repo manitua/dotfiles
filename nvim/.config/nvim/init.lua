@@ -51,6 +51,12 @@ require "paq" {
 
     -- autopairs
     "windwp/nvim-autopairs";
+
+    -- jsonnet
+    "google/vim-jsonnet";
+
+    -- bicep
+    "carlsmedstad/vim-bicep";
 }
 
 require("settings") -- lua/settings.lua

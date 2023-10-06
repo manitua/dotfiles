@@ -15,6 +15,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Indentation between the right hand side of the right prompt
+ZLE_RPROMPT_INDENT=0
+
 # Disable dotnet telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 

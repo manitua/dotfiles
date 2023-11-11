@@ -162,4 +162,4 @@ compctl -K _dotnet_zsh_complete dotnet
 #
 # Azure CLI
 #
-source "$HOME/lib/azure-cli/az.completion"
+# source "$HOME/lib/azure-cli/az.completion"

@@ -6,7 +6,7 @@ M.ui = {
 
   hl_override = {
     CursorLine = {
-      bg = "black2"
+      bg = {"black2", 2}
     }
   }
 }

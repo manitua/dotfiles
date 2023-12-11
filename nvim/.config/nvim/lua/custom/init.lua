@@ -17,3 +17,6 @@ opt.undofile       = false   -- disable automatic saves of undo history to an un
 opt.fileencoding   = "utf-8" -- file-content encoding for the current buffer
 opt.swapfile       = false   -- do not use a swapfile for the buffer
 opt.wrap           = false   -- long lines will not wrap
+
+vim.cmd('hi TrSpace ctermbg=red guibg=red')
+vim.fn.matchadd('TrSpace', [[\s\+$]]) -- highlight trailing whitespace(s)

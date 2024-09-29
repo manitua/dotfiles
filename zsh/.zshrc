@@ -48,6 +48,7 @@ autoload -U +X bashcompinit && bashcompinit
 alias vim="nvim"
 alias vi="nvim"
 alias rm='rm -i'
+alias nf='fzf -m --preview "bat --color=always {}" --bind "enter:become(nvim {+})"'
 
 #
 # History
@@ -143,7 +144,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 #
 # Source fuzzy completion and key-bindings for Zsh
 #
-[[ ! -f ~/.fzf.zsh ]] || source ~/.fzf.zsh
+source <(fzf --zsh)
 
 #
 # Dotnet

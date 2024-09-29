@@ -1,11 +1,12 @@
 ## Install
 neovim
 tree-sitter
+tree-sitter-python
 git
 tmux
 curl
 zsh
-nodejs-lts-hydrogen
+nodejs-lts-iron
 npm
 python
 pyenv
@@ -25,6 +26,7 @@ whois
 openssh
 man-pages
 man-db
+zsh-autosuggestions
 zsh-completions
 zsh-syntax-highlighting
 wget
@@ -39,7 +41,6 @@ terraform
 docker
 packer
 sqlite
-nuget
 kubeseal
 net-tools
 argocd
@@ -52,14 +53,31 @@ traceroute
 ruby
 dotnet-runtime
 dotnet-runtime-6.0
+dotnet-runtime-7.0
 dotnet-sdk
 dotnet-sdk-6.0
+dotnet-sdk-7.0
 time
 age
 xdg-utils
 inetutils
+dmidecode
+strace
+acpi
+glib2
+xclip
+ntp
+upx
+tcpdump
+graphviz
+pacman-contrib
+vegeta
+k9s
+skopeo
+bat
 
 
 ## Install Go
 go install github.com/google/go-jsonnet/cmd/jsonnet@v0.20.0
 go install github.com/google/go-jsonnet/cmd/jsonnetfmt@v0.20.0
+go install sigs.k8s.io/kubebuilder/v3@v3.14.0

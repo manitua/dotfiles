@@ -1,6 +1,6 @@
 export GOPATH=$HOME/go
 
-export PATH=$PATH:$GOPATH/bin:$HOME/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/bin:$HOME/.cargo/bin
 
 # Setting nvim as my default editor
 export VISUAL=nvim

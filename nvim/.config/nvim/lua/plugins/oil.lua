@@ -13,6 +13,8 @@ return {
       require("oil").setup {
         columns = { "icon" },
         keymaps = {
+          ["<CR>"] = "actions.select",
+          ["<Tab>"] = "actions.select",
           ["<C-h>"] = false,
           ["<C-j>"] = false,
           ["<C-k>"] = false,

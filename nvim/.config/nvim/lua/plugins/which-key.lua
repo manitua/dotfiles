@@ -7,9 +7,9 @@ return {
   end,
   opts = {
     spec = {
-      { "<leader>f", group = "[F]ind" },
-      { "<leader>s", group = "[S]plit" },
+      { "<leader>s", group = "[S]earch" },
       { "<leader>t", group = "[T]ab" },
+      { "<leader>w", group = "[W]indow" },
     },
   },
 }

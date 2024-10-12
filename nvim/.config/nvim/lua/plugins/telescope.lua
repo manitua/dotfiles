@@ -46,15 +46,15 @@ return {
       local builtin = require "telescope.builtin"
       local keymap = vim.keymap
 
-      keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find [F]iles in cwd" })
-      keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[G]rep string in cwd" })
-      keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
-      keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find string under [C]ursor in cwd" })
-      keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Find [R]ecent files" })
-      keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find Telescope [H]elp tags" })
-      keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find normal mode [K]eymappings" })
-      keymap.set("n", "<leader>fb", builtin.builtin, { desc = "Find [B]uiltin Telescope community pickers" })
-      keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find [D]iagnostics" })
+      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp tags" })
+      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymappings" })
+      vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles in cwd" })
+      vim.keymap.set("n", "<leader>sb", builtin.builtin, { desc = "[S]earch [B]uiltin Telescope community pickers" })
+      vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord under cursor in cwd" })
+      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep in cwd" })
+      vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch workspace [D]iagnostics" })
+      vim.keymap.set("n", "<leader>sr", builtin.oldfiles, { desc = "[S]earch [R]ecent files" })
+      vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
       keymap.set("n", "<leader>/", function()
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {

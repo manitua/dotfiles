@@ -21,10 +21,10 @@ keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Unload current buffer
 keymap.set("n", "<leader>X", "<cmd>bwipeout<CR>", { desc = "Wipeout current buffer" }) -- like :bdelete, but really delete the buffer
 
 -- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window [V]ertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window [H]orizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits [E]qual size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split window" })
+keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split [W]indow [V]ertically" })
+keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split [W]indow [H]orizontally" })
+keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make [W]indow splits [E]qual size" })
+keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "[X] Close current split window" })
 
 -- tab management
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "[O]pen new tab" })

@@ -75,6 +75,7 @@ vegeta
 k9s
 skopeo
 bat
+lazygit
 
 
 ## Install Go

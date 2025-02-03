@@ -154,7 +154,7 @@ return { -- LSP Plugins
           },
         },
 
-        -- bashls = {},
+        bashls = {},
 
         bicep = {},
 

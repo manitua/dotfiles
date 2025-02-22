@@ -63,3 +63,6 @@ vim.fn.matchadd("TrSpace", [[\s\+$]])
 
 -- built in file explorer
 g.netrw_liststyle = 3 -- tree style listing
+
+--
+g.have_nerd_font = true

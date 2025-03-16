@@ -35,6 +35,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
     },
     config = function()
       -- See `:help cmp`
@@ -60,7 +61,7 @@ return {
           ["<C-j>"] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ["<C-p>"] = cmp.mapping.select_prev_item(),
-          ["<C-k>"] = cmp.mapping.select_next_item(),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
 
           -- Scroll the documentation window [b]ack / [f]orward
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -70,6 +71,10 @@ return {
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ["<C-y>"] = cmp.mapping.confirm { select = true },
+          ["<CR>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true,
+          },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -101,6 +106,26 @@ return {
             end
           end, { "i", "s" }),
 
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
@@ -114,6 +139,7 @@ return {
           { name = "luasnip" },
           { name = "path" },
           { name = "nvim_lsp_signature_help" },
+          { name = "buffer" },
         },
       }
     end,

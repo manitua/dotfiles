@@ -1,4 +1,4 @@
-local o = vim.opt
+local o = vim.o
 local g = vim.g
 
 -- line numbers
@@ -49,7 +49,7 @@ o.splitright = true -- splitting a window will put the new window right of the c
 o.inccommand = "split" -- shows the effects of a command incrementally in the buffer and partial off-screen results in a preview window
 
 -- clipboard
-o.clipboard:append "unnamedplus" -- use system clipboard register "+" as default register
+vim.opt.clipboard:append "unnamedplus" -- use system clipboard register "+" as default register
 
 -- disable some default providers
 g.loaded_node_provider = 0

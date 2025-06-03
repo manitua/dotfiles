@@ -26,16 +26,15 @@ return {
       local installed_packages = registry.get_installed_package_names()
       local pkgs_to_upgrade = 0
 
-      local function callback(success)
-        if success then
-          pkgs_to_upgrade = pkgs_to_upgrade + 1
-        end
-      end
+      for _, p in pairs(installed_packages) do
+        local pkg = registry.get_package(p)
+        if pkg:is_installed() then
+          local latest_version = pkg:get_latest_version()
+          local installed_version = pkg:get_installed_version()
 
-      for _, pkg in pairs(installed_packages) do
-        local p = registry.get_package(pkg)
-        if p then
-          p:check_new_version(callback)
+          if latest_version > installed_version then
+            pkgs_to_upgrade = pkgs_to_upgrade + 1
+          end
         end
       end
 

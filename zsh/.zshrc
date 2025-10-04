@@ -49,6 +49,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias rm='rm -i'
 alias nf='fzf -m --preview "bat --color=always {}" --bind "enter:become(nvim {+})"'
+alias icat="kitten icat"
 
 #
 # History

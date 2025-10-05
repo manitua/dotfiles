@@ -1,4 +1,5 @@
 {
+  "reload_style_on_change": true,
   "position": "top",
   "modules-left": [
     "hyprland/workspaces"
@@ -7,6 +8,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "bluetooth",
     "network",
     "pulseaudio",
     "battery",
@@ -29,13 +31,25 @@
     "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
     "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
     ],
     "tooltip-format": "{time}"
+  },
+  "bluetooth": {
+    "format": "<span size='13000'></span>",
+    "format-disabled": "<span size='13000'>󰂲</span>",
+    "format-connected": "<span size='13000'></span>",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "blueberry"
   },
   "network": {
     "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",

@@ -8,6 +8,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "custom/wireguard",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -69,5 +70,15 @@
       ]
     },
     "on-click": "pavucontrol"
+  },
+  "custom/wireguard": {
+    "format": "<span size='13000'>{icon} </span>{text}",
+    "exec": "~/.config/waybar/wireguard.sh",
+    "return-type": "json",
+    "interval": 5,
+    "format-icons": {
+      "up": "",
+      "down": ""
+    }
   }
 }

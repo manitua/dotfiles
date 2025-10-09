@@ -66,7 +66,8 @@ button:hover {
 #tray,
 #network,
 #mode,
-#scratchpad {
+#scratchpad,
+#custom-wireguard {
   margin-top: 2px;
   margin-bottom: 2px;
   margin-left: 4px;
@@ -100,6 +101,11 @@ button:hover {
   border-bottom: 2px solid @yellow;
 }
 
+#custom-wireguard {
+  color: @mauve;
+  border-bottom: 2px solid @mauve;
+}
+
 #idle_inhibitor {
   margin-right: 12px;
   color: #7cb342;
@@ -122,11 +128,4 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
   margin-right: 0;
-}
-
-#custom-vpn {
-  color: @lavender;
-  border-radius: 15px;
-  padding-left: 6px;
-  padding-right: 6px;
 }

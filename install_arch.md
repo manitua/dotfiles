@@ -316,6 +316,26 @@ Set the root password
 # passwd
 ```
 
+## Create user
+
+Create user
+
+```
+# useradd -G wheel -m -U <user>
+```
+
+Set user password
+
+```
+# passwd <user>
+```
+
+Edit sudoers file and uncomment wheel group i.e. `%wheel ALL=(ALL:ALL) ALL`
+
+```
+# EDITOR=nvim visudo
+```
+
 ## Enable some services
 
 ```
@@ -325,7 +345,79 @@ Set the root password
 
 ## Reboot
 
+You can remove installation USB when system is about to start
+
 ```
 # exit
 # shutdown -r now
+```
+
+## Setup network (WiFi)
+
+```
+$ nmcli device wifi list
+$ nmcli device wifi connect <SSID> --ask
+```
+
+## Enable secure boot
+
+Reboot to BIOS and put system in "secure boot setup mode" by deleting all vendor keys
+i.e. microsoft builtin keys as we are not planing to dual boot.
+
+Create own keys
+
+```
+$ sudo sbctl create-keys
+```
+
+Check that Installed is OK (sbctl is installed), Owner GUID exists and Setup Mode is enabled with:
+
+```
+$ sudo sbctl status
+```
+
+Enroll keys
+
+```
+$ sudo sbctl enroll-keys
+```
+
+Sign compressed linux kernel referenced by bootloader
+
+```
+$ sudo sbctl sign -s /boot/vmlinuz-linux
+```
+
+Before signing bootloader EFI binary, reinstall/update GRUB
+
+```
+$ sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB \
+    --disable-shim-lock --modules="tpm" --recheck
+```
+
+Remake GRUB config
+
+```
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+Sign bootloader EFI binary
+
+```
+$ sudo sbctl sign -s /boot/EFI/GRUB/grubx64.efi
+```
+
+Check/verify that both bootloader and kernel are signed
+
+```
+$ sudo sbctl list-files
+```
+
+Reboot to BIOS and enable secure boot and boot into OS after the change
+
+Verify that Installed is OK (sbctl is installed), Owner GUID exists and Setup Mode is disabled
+and Secure Boot enabled
+
+```
+$ sudo sbctl status
 ```

@@ -27,4 +27,8 @@ export AZURE_CORE_COLLECT_TELEMETRY=0
 # Disable snyk cli analytics
 export SNYK_DISABLE_ANALYTICS=1
 
-#path=($path[@] $HOME/something/bin)
+path=(
+  $path[@]
+  $HOME/azure-cli-venv/bin
+  /opt/microsoft/microsoft-azurevpnclient
+)

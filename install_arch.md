@@ -413,7 +413,9 @@ Check/verify that both bootloader and kernel are signed
 $ sudo sbctl list-files
 ```
 
-Reboot to BIOS and enable secure boot and boot into OS after the change
+Reboot to BIOS and enable secure boot also set BIOS setup password to prevent
+BIOS changes, as without it our secure boot setup will be for nothing, and boot
+into OS after the change
 
 Verify that Installed is OK (sbctl is installed), Owner GUID exists and Setup Mode is disabled
 and Secure Boot enabled

@@ -60,6 +60,10 @@ networkmanager
 network-manager-applet
 nmap
 nodejs
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
 npm
 ntp
 openbsd-netcat
@@ -73,6 +77,7 @@ pavucontrol
 perf
 pipewire-alsa
 pipewire-audio
+pipewire-jack
 pipewire-pulse
 pkgconf
 postgresql-libs

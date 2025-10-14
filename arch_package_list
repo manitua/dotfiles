@@ -83,7 +83,9 @@ pipewire-pulse
 pkgconf
 postgresql-libs
 pwgen
+qt5ct
 qt5-wayland
+qt6ct
 qt6-wayland
 ripgrep
 ruby

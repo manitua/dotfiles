@@ -24,6 +24,7 @@ docker-compose
 dosfstools
 dunst
 efibootmgr
+fastfetch
 fd
 firefox
 firefox-developer-edition
@@ -83,6 +84,7 @@ pkgconf
 postgresql-libs
 pwgen
 qt5-wayland
+qt6-wayland
 ripgrep
 ruby
 rust
@@ -116,6 +118,7 @@ whois
 wireguard-tools
 wlr-randr
 wofi
+xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 yarn
 yubikey-manager

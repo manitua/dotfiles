@@ -60,7 +60,7 @@
 window {
   margin: 0px;
   padding: 10px;
-  border: 2px solid @lavender;
+  border: 2px solid @mauve;
   background-color: @base;
 }
 

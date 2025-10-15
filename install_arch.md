@@ -423,3 +423,13 @@ and Secure Boot enabled
 ```
 $ sudo sbctl status
 ```
+
+## Install AUR package helper
+
+Paru
+
+```
+$ git clone https://aur.archlinux.org/paru.git
+$ cd paru
+$ makepkg -i
+```

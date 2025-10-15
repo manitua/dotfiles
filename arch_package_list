@@ -68,6 +68,7 @@ noto-fonts-extra
 npm
 ntp
 openbsd-netcat
+openresolv
 openssh
 openssl
 opentofu
@@ -124,6 +125,7 @@ xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
 yarn
 yubikey-manager
+zenity
 zip
 zsh
 zsh-autosuggestions

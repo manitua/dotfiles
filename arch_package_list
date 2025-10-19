@@ -22,7 +22,6 @@ dmidecode
 docker
 docker-compose
 dosfstools
-dunst
 efibootmgr
 fastfetch
 fd
@@ -52,6 +51,7 @@ linux
 linux-firmware
 lsof
 make
+mako
 man-db
 man-pages
 mariadb-clients

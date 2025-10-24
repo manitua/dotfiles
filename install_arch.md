@@ -187,7 +187,7 @@ Use `pacstrap` script to install the essential packages
 # pacstrap /mnt \
     base linux linux-firmware <intel|amd>-ucode grub <grub-btrfs> efibootmgr \
     cryptsetup <lvm2|btrfs-progs> networkmanager network-manager-applet \
-    dhcpcd neovim sudo acpid sbctl
+    dhcpcd systemd-resolvconf neovim sudo acpid sbctl
 ```
 
 ## Configure `fstab`
@@ -196,6 +196,15 @@ Generate an `fstab` file (`-U` for UUID)
 
 ```
 # genfstab -U -p /mnt >> /mnt/etc/fstab
+```
+
+## DNS
+
+Create symlink to propagates the systemd-resolved managed configuration to all
+clients
+
+```
+# ln -sf ../run/systemd/resolve/stub-resolv.conf /mnt/etc/resolv.conf
 ```
 
 ## Chroot

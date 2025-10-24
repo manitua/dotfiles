@@ -22,6 +22,8 @@ dmidecode
 docker
 docker-compose
 dosfstools
+dotnet-sdk
+dotnet-sdk-8.0
 efibootmgr
 fastfetch
 fd
@@ -68,7 +70,6 @@ noto-fonts-extra
 npm
 ntp
 openbsd-netcat
-openresolv
 openssh
 openssl
 opentofu
@@ -100,6 +101,7 @@ sqlite-analyzer
 stow
 strace
 sudo
+systemd-resolvconf
 talosctl
 tcpdump
 terraform
@@ -119,10 +121,12 @@ wget
 which
 whois
 wireguard-tools
+wireless-regdb
 wlr-randr
 wofi
 xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
+xxd
 yarn
 yubikey-manager
 zenity

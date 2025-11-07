@@ -29,6 +29,7 @@ fastfetch
 fd
 firefox
 firefox-developer-edition
+fwupd
 fzf
 gcc
 git
@@ -78,6 +79,7 @@ pacman-contrib
 patch
 pavucontrol
 perf
+php
 pipewire-alsa
 pipewire-audio
 pipewire-jack
@@ -112,6 +114,7 @@ ttf-cascadia-code-nerd
 ttf-cascadia-mono-nerd
 ttf-hack-nerd
 ttf-meslo-nerd
+udisks2
 unzip
 upx
 usbutils

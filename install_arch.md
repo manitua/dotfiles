@@ -345,11 +345,25 @@ Edit sudoers file and uncomment wheel group i.e. `%wheel ALL=(ALL:ALL) ALL`
 # EDITOR=nvim visudo
 ```
 
+## Setup systemd-timesyncd
+
+```
+mkdir -p /etc/systemd/timesyncd.conf.d/
+```
+
+Create file `local.conf`, in directory above, with following content:
+
+```
+[Time]
+NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org
+```
+
 ## Enable some services
 
 ```
 # systemctl enable NetworkManager
 # systemctl enable acpid
+# systemctl enable systemd-timesyncd.service
 ```
 
 ## Reboot
@@ -422,7 +436,7 @@ Check/verify that both bootloader and kernel are signed
 $ sudo sbctl list-files
 ```
 
-Reboot to BIOS and enable secure boot also set BIOS setup password to prevent
+Reboot to BIOS and enable secure boot. Also set BIOS setup password to prevent
 BIOS changes, as without it our secure boot setup will be for nothing, and boot
 into OS after the change
 

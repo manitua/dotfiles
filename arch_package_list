@@ -2,6 +2,7 @@ acpi
 acpid
 age
 amd-ucode
+azure-cli
 base
 base-devel
 bat
@@ -39,10 +40,12 @@ grub-btrfs
 helm
 hypridle
 hyprland
+hyprlauncher
 hyprlock
 hyprpaper
 hyprpolkitagent
 hyprshot
+hyprtoolkit
 inetutils
 jq
 k9s
